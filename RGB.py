@@ -1,6 +1,7 @@
 from PIL import Image, ImageFilter
 import cv2
 import numpy as np
+#choose file here
 im = np.array(Image.open('855a1e1e5d5eb4b60dd4b5e52e0065f6.jpg'))
 print(type(im))
 im_rgb =  cv2.cvtColor(im,cv2.COLOR_BGR2RGB)
@@ -14,7 +15,9 @@ class average():
         self.w = self.im.shape[1]
         self.rgb_ave = np.zeros(self.im.shape)
         self.rgb_block = np.zeros(self.im.shape)
+        #deviding hight into self.i
         self.i = 200
+        #scaling hight of RGB block
         self.scale = self.h/(self.i*600)
         print(self.scale)
     def cal(self):
@@ -39,4 +42,5 @@ ave = average()
 rgb_ave = ave.cal()
 rgb_block = ave.block()
 cv2.imwrite('rgb_ave.jpg', rgb_ave)
+#output
 cv2.imwrite('undertale.jpg', rgb_block)
